@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        dockerfile {
+                   filename 'Jenkinsfiles/Dockerfile-16.04'
+                   args '--device=/dev/kvm:/dev/kvm:rw'
+                   label 'jos'
+        }
+    }
+    stages {
+        stage('build') {
+            steps {
+                timeout(time: 15, unit: 'MINUTES') {
+                sh '''
+                make grade
+                '''
+                }
+            }
+        }
+    }
+}
