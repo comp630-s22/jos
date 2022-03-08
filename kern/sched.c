@@ -76,7 +76,8 @@ sched_halt(void)
 		"movq %0, %%rsp\n"
 		"pushq $0\n"
 		"pushq $0\n"
-		"sti\n"
+		// Uncomment the sti  for Part C, Exercise 13
+		// "sti\n"
 		"hlt\n"
 		: : "a" (thiscpu->cpu_ts.ts_esp0));
 }
